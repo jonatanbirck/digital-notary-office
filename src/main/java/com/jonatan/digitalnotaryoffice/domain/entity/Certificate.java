@@ -28,6 +28,12 @@ public class Certificate {
     @Column(columnDefinition="TEXT")
     private String description;
 
+    @Column(nullable = false)
+    private String version = "1.0";
+    
+    @Column(nullable = false)
+    private CertificateState state = CertificateState.ACTIVE;
+
     @ManyToMany(mappedBy = "certificates")
     private List<Notary> notaries = new ArrayList<>();
 }
