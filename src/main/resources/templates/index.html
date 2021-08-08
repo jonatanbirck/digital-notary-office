@@ -4,15 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Digital Notary's Office</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/style/nav-bar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/style/index.css}">
 </head>
 <body>
-    <div class="container-fluid text-center">
-        <h1>Welcome</h1>
-        <a class="h2" th:href="@{/adresses}">Manage Adresses</a>
-        <a class="h2" th:href="@{/certificates}">Manage Certificates</a>
-        <a class="h2" th:href="@{/notaries}">Manage Notaries</a>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <a class="navbar-brand" href="#">Digital Notary's office</a>
+    </nav>
+    <div class="jumbotron">
+        <div class="container">
+          <h1>Olá!</h1>
+          <p>Este é um projeto de demostração visando contruir um sistema de cartório. Nele você poderá gerenciar informações como cartórios, certidões e endereços.</p>
+          <p><a class="btn btn-primary btn-lg" target="_blank" href="https://github.com/jonatanbirck/digital-notary-office" role="button">Visitar reposítorio do projeto »</a></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Cartórios</h2>
+            <p>Aqui você pode encontrar todos os cartórios cadastrados. </p>
+            <p><a class="btn btn-default" th:href="@{/notaries}" role="button">Gerenciar cartórios »</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Certidões</h2>
+            <p>Verifique todas as certidões existentes e suas informações. </p>
+            <p><a class="btn btn-default" th:href="@{/certificates}" role="button">Gerenciar certidões »</a></p>
+         </div>
+          <div class="col-md-4">
+            <h2>Endereços</h2>
+            <p>Encontre os endereços e seus dados cadastrados.</p>
+            <p><a class="btn btn-default" th:href="@{/adresses}" role="button">Gerenciar endereços »</a></p>
+          </div>
+        </div>
+        <hr>
+        <footer>
+          <p>© 2021 Jonatan</p>
+        </footer>
     </div>
 </body>
 </html>
