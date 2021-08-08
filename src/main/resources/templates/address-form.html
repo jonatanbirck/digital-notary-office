@@ -7,8 +7,8 @@
     <title>DNO - Endereços</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/style/nav-bar.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/style/adresses.css}">
-    <script th:src="@{/js/cancelAddressForm.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/style/base-entity.css}">
+    <script th:src="@{/js/util.js}"></script>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -66,13 +66,13 @@
                 <!--Complemento-->
                 <div class="form-group row p-2">
                     <label class="col-sm-4 col-form-label">Complemento</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 pb-2">
                         <input type="text" th:field="*{complement}" class="form-control"/>
                     </div>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success m-2">Cadastrar</button>
-                    <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancelar</button>
+                    <button type="button" class="btn btn-secondary m-2" onclick="cancelForm('adresses')">Cancelar</button>
                 </div>
             </div>
         </form>
