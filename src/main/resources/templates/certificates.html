@@ -4,12 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DNO - Certidões</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/style/nav-bar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/style/base-entity.css}">
 </head>
 <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <a class="navbar-brand" href="/">Digital Notary's Office</a>
+    </nav>  
+    <div class="text-center">
+        <h2 class="jumbotron">Certidões</h2>
+        <p><a class="btn btn-success btn-sm" href="/certificates/new" role="button">Cadastrar uma certidão</a></p>
+    </div>
+    <div th:if="${message}" class="alert alert-success text-center m-3">
+        [[${message}]]
+    </div>
     <div class="container-fluid text-center">
-        <h1>Certificates</h1>
+        <div>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Versão</th>
+                        <th>Estado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <th:block th:each="certificate : ${listCertificates}">
+                        <tr>
+                            <td>[[${certificate.name}]]</td>
+                            <td>[[${certificate.description}]]</td>
+                            <td>[[${certificate.version}]]</td>
+                            <td>[[${certificate.state.displayValue}]]</td>
+                            <td>
+                                <a class="btn btn-outline-secondary mr-3" th:href="@{'/certificates/edit/' + ${certificate.id}}">Editar</a>
+                                <a class="btn btn-outline-danger" th:href="@{'/certificates/delete/' + ${certificate.id}}">Deletar</a>
+                            </td>
+                        </tr>
+                    </block>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>
+
