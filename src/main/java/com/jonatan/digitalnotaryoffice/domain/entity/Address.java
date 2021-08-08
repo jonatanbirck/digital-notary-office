@@ -26,13 +26,16 @@ public class Address {
     private String complement;   
 
     @Column(nullable = false)
-    private String address;
+    private String street;
     
     @Column(nullable = false)
     private String district;
 
     @Column(nullable = false)
-    private String location;
+    private String city;
+
+    @Column(nullable = false)
+    private String state;
 
     @Column(length = 2, nullable = false)
     private String uf;

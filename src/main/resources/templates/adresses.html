@@ -4,12 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DNO - Endereços</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/style/nav-bar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/style/adresses.css}">
 </head>
 <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <a class="navbar-brand" href="/">Digital Notary's Office</a>
+    </nav>  
+    <div class="text-center">
+        <h2 class="jumbotron">Endereços</h2>
+        <p><a class="btn btn-success btn-sm" href="/adresses/new" role="button">Cadastrar um endereço</a></p>
+    </div>
+    <div th:if="${message}" class="alert alert-success text-center m-3">
+        [[${message}]]
+    </div>
     <div class="container-fluid text-center">
-        <h1>Adresses</h1>
+        <div>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>CEP</th>
+                        <th>UF</th>
+                        <th>Estado</th>
+                        <th>Cidade</th>
+                        <th>Bairro</th>
+                        <th>Endereço</th>
+                        <th>Complemento</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <th:block th:each="address : ${listAdresses}">
+                        <tr>
+                            <td>[[${address.cep}]]</td>
+                            <td>[[${address.uf}]]</td>
+                            <td>[[${address.state}]]</td>
+                            <td>[[${address.city}]]</td>
+                            <td>[[${address.district}]]</td>
+                            <td>[[${address.street}]]</td>
+                            <td>[[${address.complement}]]</td>
+                            <td>
+                                <a class="btn btn-outline-secondary mr-3" th:href="@{'/adresses/edit/' + ${address.id}}">Editar</a>
+                                <a class="btn btn-outline-danger" th:href="@{'/adresses/delete/' + ${address.id}}">Deletar</a>
+                            </td>
+                        </tr>
+                    </block>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>
+
