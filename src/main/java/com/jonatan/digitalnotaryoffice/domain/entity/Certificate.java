@@ -28,6 +28,9 @@ public class Certificate {
     @Column(columnDefinition="TEXT")
     private String description;
 
+    @Column(nullable = false)
+    private String version = "1.0";    
+
     @ManyToMany(mappedBy = "certificates")
     private List<Notary> notaries = new ArrayList<>();
 }

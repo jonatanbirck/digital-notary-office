@@ -52,6 +52,7 @@ public abstract class Seed {
 
 		Certificate certificate2 = new Certificate();
 		certificate2.setName("Certidão de casamento");
+		certificate2.setVersion("1.1");
 		certificate2.setDescription("Descrição certidão de casamento");
 
 		Certificate certificate3 = new Certificate();
