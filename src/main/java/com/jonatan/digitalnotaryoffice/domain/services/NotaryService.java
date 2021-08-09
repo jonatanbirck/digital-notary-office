@@ -1,7 +1,6 @@
 package com.jonatan.digitalnotaryoffice.domain.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.jonatan.digitalnotaryoffice.domain.entity.Notary;
 import com.jonatan.digitalnotaryoffice.domain.repository.NotaryRepository;
@@ -23,23 +22,18 @@ public class NotaryService implements INotaryService {
     }
 
     @Override
-    public Optional<Notary> getNotary(Long id) {
-        return notaryRepository.findById(id);
+    public Notary getNotary(Long id) {
+        return notaryRepository.getById(id);
     }
 
     @Override
-    public Optional<Notary> getNotary(String name) {
+    public Notary getNotary(String name) {
         return notaryRepository.findByName(name);
     }
 
     @Override
     public List<Notary> getNotaries() {
         return notaryRepository.findAll();
-    }
-
-    @Override
-    public Notary updateNotary(Notary notary) {
-        return notaryRepository.save(notary);
     }
 
     @Override

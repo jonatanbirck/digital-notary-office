@@ -1,7 +1,6 @@
 package com.jonatan.digitalnotaryoffice.domain.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.jonatan.digitalnotaryoffice.domain.entity.Address;
 import com.jonatan.digitalnotaryoffice.domain.repository.AddressRepository;
@@ -23,18 +22,13 @@ public class AddressService implements IAddressService {
     }
 
     @Override
-    public Optional<Address> getAddress(Long id) {
-        return addressRepository.findById(id);
+    public Address getAddress(Long id) {
+        return addressRepository.getById(id);
     }
 
     @Override
-    public List<Address> getAddresss() {
+    public List<Address> getAdresses() {
         return addressRepository.findAll();
-    }
-
-    @Override
-    public Address updateAddress(Address address) {
-        return addressRepository.save(address);
     }
 
     @Override
