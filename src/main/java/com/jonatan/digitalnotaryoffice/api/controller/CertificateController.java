@@ -35,8 +35,7 @@ public class CertificateController {
 
     @GetMapping("/new")
     public String showNewForm(Model model) {
-        model.addAttribute("certificate", new Certificate());
-        model.addAttribute("pageTitle", "Cadastrar certidão");
+        model.addAttribute("certificateDTO", new CertificateDTO());
         return "certificate-form";
     }
 
