@@ -21,3 +21,4 @@ Não é necessaria nenhuma configuração adicional, pois a aplicação utiliza 
 
 ### Dicas
 Utilize o localhost:8080/h2 para realizar queries no h2.
+
