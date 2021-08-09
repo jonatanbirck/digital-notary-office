@@ -15,10 +15,10 @@
         <a class="navbar-brand" href="/">Digital Notary's Office</a>
     </nav>  
     <div class="text-center">
-        <h2 class="jumbotron">[[${pageTitle}]]</h2>
+        <h2 class="jumbotron">Preencha o formulário de certidão</h2>
     </div>
     <div>
-        <form th:action="@{/certificates/save}" method="post" th:object="${certificate}">
+        <form th:action="@{/certificates/save}" method="post" th:object="${certificateDTO}">
             <input type="hidden" th:field="*{id}"/>
             <!--Nome-->
             <div class="border border-secondary rounded p-3">
@@ -26,6 +26,7 @@
                     <label class="col-sm-4 col-form-label">Nome</label>
                     <div class="col-sm-8">
                         <input type="text" th:field="*{name}" class="form-control" required/>
+                        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:errorclass="error"></span>
                     </div>
                 </div>
                 <!--Descrição-->
@@ -33,6 +34,7 @@
                     <label class="col-sm-4 col-form-label">Descrição</label>
                     <div class="col-sm-8">
                         <input type="text" th:field="*{description}" class="form-control"/>
+                        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" th:errorclass="error"></span>
                     </div>
                 </div>
                 <!--Versão-->
@@ -40,6 +42,7 @@
                     <label class="col-sm-4 col-form-label">Versão</label>
                     <div class="col-sm-8">
                         <input type="text" th:field="*{version}" class="form-control" required/>
+                        <span th:if="${#fields.hasErrors('version')}" th:errors="*{version}" th:errorclass="error"></span>
                     </div>
                 </div>    
                 <!--Estado-->
