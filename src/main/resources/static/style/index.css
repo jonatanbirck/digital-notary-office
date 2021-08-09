@@ -17,8 +17,8 @@ div {
 }
 
 .container {
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: 10%;
+    padding-left: 10%;
     margin-right: auto;
     margin-left: auto;
 }
