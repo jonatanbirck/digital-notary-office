@@ -4,12 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DNO - Cartórios</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/style/nav-bar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/style/base-entity.css}">
 </head>
 <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <a class="navbar-brand" href="/">Digital Notary's Office</a>
+    </nav>  
+    <div class="text-center">
+        <h2 class="jumbotron">Cartórios</h2>
+        <p><a class="btn btn-success btn-sm" href="/notaries/new" role="button">Cadastrar um cartório</a></p>
+    </div>
+    <div th:if="${message}" class="alert alert-success text-center m-3">
+        [[${message}]]
+    </div>
     <div class="container-fluid text-center">
-        <h1>Notaries</h1>
+        <div>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Endereço</th>
+                        <th>Certidões</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <th:block th:each="notary : ${listNotaries}">
+                        <tr>
+                            <td>[[${notary.name}]]</td>
+                            <td>[[${notary.address.street}]] - [[${notary.address.district}]], [[${notary.address.city}]] - [[${notary.address.uf}]]</td>
+                            <td>
+                                <th:block th:each="certificate, iterator : ${notary.certificates}"
+                                    th:text="!${iterator.last} ? ${certificate.name} + ', ' : ${certificate.name}">
+                                </th:block>
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-secondary mr-3 m-2" th:href="@{'/notaries/edit/' + ${notary.id}}">Editar</a>
+                                <a class="btn btn-outline-danger" th:href="@{'/notaries/delete/' + ${notary.id}}">Deletar</a>
+                            </td>
+                        </tr>
+                    </block>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>
+
+
+

@@ -40,7 +40,7 @@
                             <td>[[${certificate.version}]]</td>
                             <td>[[${certificate.state.displayValue}]]</td>
                             <td>
-                                <a class="btn btn-outline-secondary mr-3" th:href="@{'/certificates/edit/' + ${certificate.id}}">Editar</a>
+                                <a class="btn btn-outline-secondary mr-3 m-2" th:href="@{'/certificates/edit/' + ${certificate.id}}">Editar</a>
                                 <a class="btn btn-outline-danger" th:href="@{'/certificates/delete/' + ${certificate.id}}">Deletar</a>
                             </td>
                         </tr>
