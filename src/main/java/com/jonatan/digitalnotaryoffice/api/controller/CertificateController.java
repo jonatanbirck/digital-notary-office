@@ -1,7 +1,6 @@
 package com.jonatan.digitalnotaryoffice.api.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.jonatan.digitalnotaryoffice.api.model.CertificateDTO;
 import com.jonatan.digitalnotaryoffice.domain.entity.Certificate;

@@ -1,18 +1,17 @@
 package com.jonatan.digitalnotaryoffice.api.controller;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.atomic.LongAdder;
+
+import javax.validation.Valid;
 
 import com.jonatan.digitalnotaryoffice.api.model.AddressDTO;
 import com.jonatan.digitalnotaryoffice.domain.entity.Address;
 import com.jonatan.digitalnotaryoffice.domain.services.AddressService;
-import com.jonatan.digitalnotaryoffice.domain.services.NotaryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,31 +34,47 @@ public class AddressController {
 
     @GetMapping("/new")
     public String showNewForm(Model model) {
-        model.addAttribute("address", new Address());
-        model.addAttribute("pageTitle", "Cadastrar endereço");
+        model.addAttribute("addressDTO", new AddressDTO());
         return "address-form";
     }
 
     @PostMapping("/save")
-    public String saveAddress(Address address, RedirectAttributes ra) {
-        addressService.saveAddress(address);
-        ra.addFlashAttribute("message","Endereço salvo com sucesso.");
+    public String saveAddress(@Valid AddressDTO addressDTO, BindingResult result, Model model, RedirectAttributes ra) {
+
+        try {
+            if( result.hasErrors() ) {
+                return "address-form";
+            }
+            
+            Address address = toAddress(addressDTO);
+
+            addressService.saveAddress(address);
+            
+            ra.addFlashAttribute("message","Endereço salvo com sucesso.");
+        } catch (Exception e) {
+            ra.addFlashAttribute("message",e.getMessage());
+        }
+
         return "redirect:/adresses";
     }
 
     @GetMapping("/edit/{id}")
     public String showEditFormm(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
         
-        Address address = addressService.getAddress(id);
+        try {
+            Address address = addressService.getAddress(id);
 
-        if( address != null ) {
-            model.addAttribute("address", address );
-            model.addAttribute("pageTitle", "Editar endereço");
-        } else {
-            ra.addFlashAttribute("message","Endereço não encontrado.");
-            return "redirect:/adresses";
+            if( address != null ) {
+                AddressDTO addressDTO = toAddressDTO(address);
+                model.addAttribute("addressDTO", addressDTO );
+            } else {
+                ra.addFlashAttribute("message","Endereço não encontrado.");
+                return "redirect:/adresses";
+            }
+        } catch (Exception e) {
+            ra.addFlashAttribute("message",e.getMessage());
         }
-        
+
         return "address-form";
     }
 

@@ -2,7 +2,6 @@ package com.jonatan.digitalnotaryoffice.api.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
