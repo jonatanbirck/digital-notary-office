@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.LongAdder;
 
+import com.jonatan.digitalnotaryoffice.api.model.AddressDTO;
 import com.jonatan.digitalnotaryoffice.domain.entity.Address;
 import com.jonatan.digitalnotaryoffice.domain.services.AddressService;
+import com.jonatan.digitalnotaryoffice.domain.services.NotaryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +28,7 @@ public class AddressController {
 
     @GetMapping
     public String showAdresses(Model model) {
-        List<Address> adresses = addressService.getAddresss();
+        List<Address> adresses = addressService.getAdresses();
         model.addAttribute("listAdresses", adresses);
         return "adresses";
     }
@@ -48,10 +50,10 @@ public class AddressController {
     @GetMapping("/edit/{id}")
     public String showEditFormm(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
         
-        Optional<Address> address = addressService.getAddress(id);
+        Address address = addressService.getAddress(id);
 
-        if( address.isPresent() ) {
-            model.addAttribute("address", address.get() );
+        if( address != null ) {
+            model.addAttribute("address", address );
             model.addAttribute("pageTitle", "Editar endereço");
         } else {
             ra.addFlashAttribute("message","Endereço não encontrado.");
@@ -64,11 +66,11 @@ public class AddressController {
     @GetMapping("/delete/{id}")
     public String deleteAddress(@PathVariable("id") Long id, RedirectAttributes ra) {
         
-        Optional<Address> address = addressService.getAddress(id);
+        Address address = addressService.getAddress(id);
         
-        if( address.isPresent() ) {
+        if( address != null ) {
             try {
-                addressService.deleteAddress(address.get());
+                addressService.deleteAddress(address);
             } catch (Exception e) {
                 ra.addFlashAttribute("message",e.getMessage());
             }
@@ -79,4 +81,29 @@ public class AddressController {
         return "redirect:/adresses";
     }
 
+    private AddressDTO toAddressDTO(Address address) {
+        AddressDTO addressDTO = new AddressDTO();
+        addressDTO.setCep(address.getCep());
+        addressDTO.setCity(address.getCity());
+        addressDTO.setComplement(address.getComplement());
+        addressDTO.setDistrict(address.getDistrict());
+        addressDTO.setId(address.getId());
+        addressDTO.setState(address.getState());
+        addressDTO.setStreet(address.getStreet());
+        addressDTO.setUf(address.getUf());
+        return addressDTO;
+    }
+
+    private Address toAddress(AddressDTO addressDTO) {
+        Address address = new Address();
+        address.setCep(addressDTO.getCep());
+        address.setCity(addressDTO.getCity());
+        address.setComplement(addressDTO.getComplement());
+        address.setDistrict(addressDTO.getComplement());
+        address.setId(addressDTO.getId());
+        address.setState(addressDTO.getState());
+        address.setStreet(addressDTO.getStreet());
+        address.setUf(addressDTO.getUf());
+        return address;
+    }
 }

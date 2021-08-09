@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CertificateRepository extends JpaRepository<Certificate,Long> {
     
-    Optional<Certificate> findByName(String name);
+    Certificate findByName(String name);
     
 }

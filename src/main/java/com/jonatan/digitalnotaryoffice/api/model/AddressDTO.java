@@ -34,6 +34,4 @@ public class AddressDTO {
     @Size(max = 2, message = "UF não pode ter mais de 2 caracteres")
     @NotBlank(message = "UF não pode ser vazio")
     private String uf;
-
-    private Long refNotary;
 }

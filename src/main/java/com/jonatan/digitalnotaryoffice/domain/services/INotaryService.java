@@ -9,13 +9,11 @@ public interface INotaryService {
 
     Notary saveNotary(Notary notary);
 
-    Optional<Notary> getNotary(Long id);
+    Notary getNotary(Long id);
 
-    Optional<Notary> getNotary(String name);
+    Notary getNotary(String name);
 
     List<Notary> getNotaries();
-
-    Notary updateNotary(Notary notary);
 
     void deleteNotary(Notary notary);    
 }

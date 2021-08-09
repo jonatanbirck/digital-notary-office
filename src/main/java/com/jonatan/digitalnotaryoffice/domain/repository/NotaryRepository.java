@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface NotaryRepository extends JpaRepository<Notary,Long> {
  
-    Optional<Notary> findByName(String name);
+    Notary findByName(String name);
 
 }

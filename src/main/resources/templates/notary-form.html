@@ -14,8 +14,8 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <a class="navbar-brand" href="/">Digital Notary's Office</a>
     </nav>  
-    <div class="text-center">
-        <h2 class="jumbotron">[[${pageTitle}]]</h2>
+    <div class="text-center pb-5">
+        <h2 class="jumbotron">Preencha o formulário do cartório</h2>
     </div>
     <div>
         <form th:action="@{/notaries/save}" method="post" th:object="${notaryDTO}">
@@ -25,7 +25,10 @@
                 <div class="form-group row p-2">
                     <label class="col-sm-4 col-form-label">Nome</label>
                     <div class="col-sm-8">
-                        <input type="text" th:field="*{name}" class="form-control" required/>
+                        <input type="text" class="form-control"
+                            th:field="*{name}" 
+                            required/>
+                        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:errorclass="error"></span>
                     </div>
                 </div>
                 <!--Endereço-->
@@ -34,7 +37,9 @@
                     <div class="col-sm-8">
                         <select th:field="*{refAddress}" class="form-control" required>
                             <option th:each="address : ${listAdresses}"
-                                th:value="${address.id}" th:text="${address.street + ' - ' + address.district + ', ' + address.city + ' - ' + address.uf}" th:selected="${refAddress == address.id}">
+                                th:value="${address.id}" 
+                                th:text="${address.street + ' - ' + address.district + ', ' + address.city + ' - ' + address.uf}" 
+                                th:selected="${refAddress == address.id}">
                             </option>
                         </select>
                     </div>

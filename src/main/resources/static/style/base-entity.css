@@ -6,7 +6,6 @@
 .jumbotron {
     padding-top: 30px;
     padding-bottom: 30px;
-    color: inherit;
     background-color: #eee;
 }
 
@@ -14,3 +13,8 @@ form {
     max-width: 500px;
     margin: 0 auto;
 }
+
+.error {
+    color: red;
+}
+

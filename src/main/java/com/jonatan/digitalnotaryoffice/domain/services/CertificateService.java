@@ -23,23 +23,18 @@ public class CertificateService implements ICertificateService {
     }
 
     @Override
-    public Optional<Certificate> getCertificate(Long id) {
-        return certificateRepository.findById(id);
+    public Certificate getCertificate(Long id) {
+        return certificateRepository.getById(id);
     }
 
     @Override
-    public Optional<Certificate> getCertificate(String name) {
+    public Certificate getCertificate(String name) {
         return certificateRepository.findByName(name);
     }
 
     @Override
     public List<Certificate> getCertificates() {
         return certificateRepository.findAll();
-    }
-
-    @Override
-    public Certificate updateCertificate(Certificate certificate) {
-        return certificateRepository.save(certificate);
     }
 
     @Override

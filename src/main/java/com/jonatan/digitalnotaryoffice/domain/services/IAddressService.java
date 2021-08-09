@@ -9,11 +9,9 @@ public interface IAddressService {
 
     Address saveAddress(Address address);
 
-    Optional<Address> getAddress(Long id);
+    Address getAddress(Long id);
 
-    List<Address> getAddresss();
-
-    Address updateAddress(Address address);
+    List<Address> getAdresses();
 
     void deleteAddress(Address address);
 }
