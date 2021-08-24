@@ -26,13 +26,13 @@ public class DigitalNotaryOfficeApplication {
 	public CommandLineRunner run(AddressService addressService, CertificateService certificateService, NotaryService notaryService) {
 		
 		return args -> {
-			List<Address> adresses = Seed.createAdresses();
-			adresses.forEach( address -> addressService.saveAddress(address) );
+			List<Address> addresses = Seed.createAddresses();
+			addresses.forEach( address -> addressService.saveAddress(address) );
 
 			List<Certificate> certificates = Seed.createCertificates();
 			certificates.forEach( certificate -> certificateService.saveCertificate(certificate) );			
 
-			List<Notary> notaries = Seed.createNotaries(adresses, certificates);
+			List<Notary> notaries = Seed.createNotaries(addresses, certificates);
 			notaries.forEach( notary -> notaryService.saveNotary(notary) );	
 		};
 	}

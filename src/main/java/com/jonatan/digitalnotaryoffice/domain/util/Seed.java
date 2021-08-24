@@ -10,11 +10,11 @@ import com.jonatan.digitalnotaryoffice.domain.entity.Notary;
 public abstract class Seed {
 
     /**
-	 * Create simple adresses for demostration
+	 * Create simple addresses for demonstration
 	 * 
 	 * @return
 	 */
-	public static List<Address> createAdresses() {
+	public static List<Address> createAddresses() {
 		Address address1 = new Address();
 		address1.setCep(95900000);
 		address1.setComplement("Sala 01");
@@ -44,7 +44,7 @@ public abstract class Seed {
 	}
 
 	/**
-	 * Create simple certificates for demostration
+	 * Create simple certificates for demonstration
 	 * 
 	 * @return
 	 */
@@ -66,27 +66,27 @@ public abstract class Seed {
 	}
 
 	/**
-	 * Create simple notaries for demostration
+	 * Create simple notaries for demonstration
      * Just for data, never implement like this
 	 * 
-     * @param adresses List<Address>
+     * @param addresses List<Address>
      * @param certificates List<Certificate>
 	 * @return
 	 */
-	public static List<Notary> createNotaries(List<Address> adresses, List<Certificate> certificates) {
+	public static List<Notary> createNotaries(List<Address> addresses, List<Certificate> certificates) {
 		Notary notary1 = new Notary();
 		notary1.setName("Cartório Eleitoral de Lajeado");
-		notary1.setAddress(adresses.get(0));
+		notary1.setAddress(addresses.get(0));
 		notary1.setCertificates(certificates.subList(0, 2));
 
 		Notary notary2 = new Notary();
 		notary2.setName("Cartório do 2º Tabelião de Notas de São Paulo - SP (Segundo Notas)");
-		notary2.setAddress(adresses.get(1));
+		notary2.setAddress(addresses.get(1));
 		notary2.setCertificates(certificates);
 
 		Notary notary3 = new Notary();
 		notary3.setName("2º Cartório de Registro Civil");
-		notary3.setAddress(adresses.get(2));
+		notary3.setAddress(addresses.get(2));
 		notary3.setCertificates(certificates.subList(1, 2));		
 
 		return Arrays.asList(new Notary[]{notary1, notary2, notary3});

@@ -59,7 +59,7 @@ public class CertificateController {
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditFormm(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
+    public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
         try {
             Certificate certificate = certificateService.getCertificate(id);
 

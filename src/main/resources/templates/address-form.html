@@ -18,7 +18,7 @@
         <h2 class="jumbotron">Preencha o formulário de endereço</h2>
     </div>
     <div>
-        <form th:action="@{/adresses/save}" method="post" th:object="${addressDTO}">
+        <form th:action="@{/addresses/save}" method="post" th:object="${addressDTO}">
             <input type="hidden" th:field="*{id}"/>
             <!--CEP-->
             <div class="border border-secondary rounded p-3">
@@ -79,7 +79,7 @@
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success m-2">Cadastrar</button>
-                    <button type="button" class="btn btn-secondary m-2" onclick="cancelForm('adresses')">Cancelar</button>
+                    <button type="button" class="btn btn-secondary m-2" onclick="cancelForm('addresses')">Cancelar</button>
                 </div>
             </div>
         </form>

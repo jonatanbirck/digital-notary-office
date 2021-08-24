@@ -15,7 +15,7 @@
     </nav>  
     <div class="text-center">
         <h2 class="jumbotron">Endereços</h2>
-        <p><a class="btn btn-success btn-sm" href="/adresses/new" role="button">Cadastrar um endereço</a></p>
+        <p><a class="btn btn-success btn-sm" href="/addresses/new" role="button">Cadastrar um endereço</a></p>
     </div>
     <div th:if="${message}" class="alert alert-success text-center m-3">
         [[${message}]]
@@ -36,7 +36,7 @@
                     </tr>
                 </thead>
                 <tbody >
-                    <th:block th:each="address : ${listAdresses}">
+                    <th:block th:each="address : ${listAddresses}">
                         <tr>
                             <td>[[${address.cep}]]</td>
                             <td>[[${address.uf}]]</td>
@@ -46,8 +46,8 @@
                             <td>[[${address.street}]]</td>
                             <td>[[${address.complement}]]</td>
                             <td>
-                                <a class="btn btn-outline-secondary mr-3 m-2" th:href="@{'/adresses/edit/' + ${address.id}}">Editar</a>
-                                <a class="btn btn-outline-danger" th:href="@{'/adresses/delete/' + ${address.id}}">Deletar</a>
+                                <a class="btn btn-outline-secondary mr-3 m-2" th:href="@{'/addresses/edit/' + ${address.id}}">Editar</a>
+                                <a class="btn btn-outline-danger" th:href="@{'/addresses/delete/' + ${address.id}}">Deletar</a>
                             </td>
                         </tr>
                     </block>

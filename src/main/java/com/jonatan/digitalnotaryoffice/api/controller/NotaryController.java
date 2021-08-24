@@ -46,7 +46,7 @@ public class NotaryController {
     @GetMapping("/new")
     public String showNewForm(Model model) {
         model.addAttribute("notaryDTO", new NotaryDTO());
-        model.addAttribute("listAdresses", addressService.getAdresses());
+        model.addAttribute("listAddresses", addressService.getAdresses());
         model.addAttribute("listCertificates", certificateService.getCertificates());
         return "notary-form";
     }    
@@ -56,7 +56,7 @@ public class NotaryController {
 
         try {
             if( result.hasErrors() ) {
-                model.addAttribute("listAdresses", addressService.getAdresses());
+                model.addAttribute("listAddresses", addressService.getAdresses());
                 model.addAttribute("listCertificates", certificateService.getCertificates());
                 return "notary-form";
             }
@@ -74,7 +74,7 @@ public class NotaryController {
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditFormm(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
+    public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
         
         try {
             Notary notary = notaryService.getNotary(id);
@@ -82,7 +82,7 @@ public class NotaryController {
             if( notary != null ) {
                 NotaryDTO notaryDTO = toNotaryDTO(notary);
                 model.addAttribute("notaryDTO", notaryDTO );
-                model.addAttribute("listAdresses", addressService.getAdresses());
+                model.addAttribute("listAddresses", addressService.getAdresses());
                 model.addAttribute("listCertificates", certificateService.getCertificates());
             } else {
                 ra.addFlashAttribute("message","Cartório não encontrado.");

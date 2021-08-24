@@ -19,17 +19,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/adresses")
+@RequestMapping("/addresses")
 public class AddressController {
     
     @Autowired
     private AddressService addressService;
 
     @GetMapping
-    public String showAdresses(Model model) {
-        List<Address> adresses = addressService.getAdresses();
-        model.addAttribute("listAdresses", adresses);
-        return "adresses";
+    public String showAddresses(Model model) {
+        List<Address> addresses = addressService.getAdresses();
+        model.addAttribute("listAddresses", addresses);
+        return "addresses";
     }
 
     @GetMapping("/new")
@@ -54,11 +54,11 @@ public class AddressController {
             ra.addFlashAttribute("message",e.getMessage());
         }
 
-        return "redirect:/adresses";
+        return "redirect:/addresses";
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditFormm(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {   
+    public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {   
         try {
             Address address = addressService.getAddress(id);
 
@@ -67,7 +67,7 @@ public class AddressController {
                 model.addAttribute("addressDTO", addressDTO );
             } else {
                 ra.addFlashAttribute("message","Endereço não encontrado.");
-                return "redirect:/adresses";
+                return "redirect:/addresses";
             }
         } catch (Exception e) {
             ra.addFlashAttribute("message",e.getMessage());
@@ -91,7 +91,7 @@ public class AddressController {
             ra.addFlashAttribute("message","Endereço não encontrado.");
         }
         
-        return "redirect:/adresses";
+        return "redirect:/addresses";
     }
 
     private AddressDTO toAddressDTO(Address address) {
